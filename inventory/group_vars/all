@@ -1,0 +1,7 @@
+---
+  test: omero_var_test
+  omero_selinux_setup: True
+  #omero_release: 5.2.4
+  omero_release: 5.2.5
+  omero_upgrade: True
+
