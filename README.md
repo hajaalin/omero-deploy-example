@@ -4,8 +4,8 @@ This example uses http://hakunin.com/six-ansible-practices, points 1.2, 1.3 and 
 
 Clone OME infrastructure and this repository (or your fork(s)).
 ```
-git clone https://github.com/openmicroscopy/infrastructure.git
-git clone
+git clone https://github.com/hajaalin/infrastructure.git
+git clone https://github.com/hajaalin/omero-deploy-example.git
 cd omero-deploy-example
 ```  
 
