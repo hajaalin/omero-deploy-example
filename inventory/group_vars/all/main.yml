@@ -1,0 +1,34 @@
+---
+  test: omero_var_test
+  omero_selinux_setup: True
+  #omero_release: 5.2.4
+  omero_release: 5.2.5
+  omero_upgrade: True
+
+  omero_dbpassword: "{{ vault_omero_dbpassword }}"
+
+  omero_server_config:
+    omero.ldap.config: "true"
+    omero.ldap.urls: "{{ vault_omero_ldap_urls }}"
+    omero.ldap.username: "{{ vault_omero_ldap_username }}"
+    omero.ldap.password: "{{ vault_omero_ldap_password }}"
+    omero.ldap.base: "ou=people,dc=helsinki,dc=fi"
+    omero.ldap.user_mapping: "omeName=uid,firstName=givenName,lastName=sn,email=mail"
+    omero.ldap.user_filter: "(memberOf=cn=grp-lmu-active-users,ou=groups,dc=helsinki,dc=fi)"
+    #omero.ldap.user_filter: "(memberOf=cn=grp-hajaalin-test1,ou=groups,dc=helsinki,dc=fi)"
+    #omero.ldap.user_filter: "(objectClass=person)"
+    omero.ldap.new_user_group: "lmu-customers"
+    #omero.ldap.sync_on_login: "false"
+    omero.security.trustStore: "{{ omero_trust_store }}"
+    omero.security.trustStorePassword: "{{ omero_trust_store_passwd }}"
+
+  # Trust store certificates
+  omero_trust_store_setup: True
+  omero_trust_store_certificates:
+    - { url: 'https://www.digicert.com/CACerts/DigiCertAssuredIDRootCA.crt', name: 'DigiCertAssuredIDRootCA.crt'}
+    - { url: 'http://www.terena.org/activities/tcs/repository/AddTrust_External_CA_Root.pem', name: 'AddTrust_External_CA_Root.pem' }
+    - { url: 'http://www.terena.org/activities/tcs/repository/UTN-USERFirst-Hardware.pem', name: 'UTN-USERFirst-Hardware.pem' }
+    - { url: 'http://www.terena.org/activities/tcs/repository/TERENA_SSL_CA.pem', name: 'TERENA_SSL_CA.pem' }
+    - { url: 'http://www.terena.org/activities/tcs/repository/TERENA_eScience_SSL_CA.pem', name: 'TERENA_eScience_SSL_CA.pem' }
+  omero_trust_store: "{{ omero_basedir }}/trust_store.jks"
+  omero_trust_store_passwd: "{{ vault_omero_trust_store_passwd }}"
