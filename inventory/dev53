@@ -1,0 +1,5 @@
+[omero_hosts]
+192.168.41.12
+
+[dev53:children]
+omero_hosts

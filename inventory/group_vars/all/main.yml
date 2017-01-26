@@ -2,10 +2,12 @@
   test: omero_var_test
   omero_selinux_setup: True
   omero_release: 5.2.7
-  #omero_release: v5.3.0-m6
+  #omero_release: 5.3.0-m6
   omero_upgrade: True
 
   omero_dbpassword: "{{ vault_omero_dbpassword }}"
+
+  omero_systemd_setup: True
 
   omero_server_config:
     omero.ldap.config: "true"
