@@ -1,18 +1,9 @@
 ---
 - hosts: omero_hosts
   roles:
-  - role: omero-server
+  - role: openmicroscopy.omero-server
     postgresql_users_databases:
     - user: omero
       password: "{{ omero_dbpassword }}"
       databases: [omero]
   - role: hajaalin.truststore
-
-  tasks:
-  - name: install django-pipeline
-    pip:
-      name: django-pipeline
-      version: "1.3.20"
-  - name: install omero_marshal
-    pip:
-      name: omero_marshal

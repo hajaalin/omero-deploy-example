@@ -16,7 +16,9 @@ vagrant up
 ansible-galaxy install -f -r requirements.yml -p ./roles
 
 # Install on dev VM.
-ansible-playbook -i inventory/dev53 site.yml
+ansible-playbook -i inventory/dev53 site.yml -u root
+ansible-playbook -i inventory/dev53 site_fix_pip.yml -u root
+ansible-playbook -i inventory/dev53 site.yml -u root
 
 # Install on test server. Use Ansible Vault to protect secrets.
 # ansible-playbook --vault-password-file=~/.ansible_vault_passes/omero-deploy -i inventory/test site.yml --become --ask-become-pass
